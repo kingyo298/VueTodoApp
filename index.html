@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>To Do List</title>
+  <!-- bootstrap -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+  <link rel="stylesheet" href="style.css">
+  <!-- Vue.js CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+</head>
+<body>
+  <div id="app">
+    <div class='container mt-5' id="container">
+      <div class="input-group mb-3 w-50">
+          <input type="text" class="form-control" placeholder="write a task" aria-label="Recipient's username" aria-describedby="button-addon" v-model="text">
+          <button class="btn btn-outline-secondary" type="button" id="button-addon" @click="addTodoItem" :disabled="text === ''">Create</button>
+      </div>
+      <div v-if="todos.length > 0" id="cards">
+        <div class="card w-50 my-1" v-for="(todo,index) in todos" :key="index">
+          <div class="card-body">
+            <h5 class="card-title">TODO {{index}} : {{todo}}</h5>
+            <a href="#" class="btn btn-primary mt-2" @click="deleteTodoItem(index)">Delete</a>
+          </div>
+        </div>
+      </div>
+      <p v-else>まだTODOリストがありません。</p>
+    </div>
+  </div>
+  <script src="main.js"></script>
+</body>
+</html>
